@@ -26,5 +26,5 @@ EXPOSE 8000
 ENTRYPOINT ["sh", "/entrypoint.sh"]
 
 # Start the Spring Boot fat JAR with the given JAVA_OPTS
-CMD ["java", "$JAVA_OPTS -jar /rhv.jar"]
+CMD ["java", "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8000", "-jar", "/rhv.jar"]
 
