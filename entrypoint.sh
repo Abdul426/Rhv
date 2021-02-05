@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # if DEBUG_JAVA is defined
 #if [ "$DEBUG_JAVA" == "true" ]; then
 #    if [ "$DEBUG_SUSPEND" == "true" ]; then
