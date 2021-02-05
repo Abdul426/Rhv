@@ -23,7 +23,7 @@ EXPOSE 8080
 EXPOSE 8000
 
 # Execute entrypoint.sh as the entrypoint command
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["sh", "/entrypoint.sh"]
 
 # Start the Spring Boot fat JAR with the given JAVA_OPTS
 CMD exec java $JAVA_OPTS -jar /rhv.jar
