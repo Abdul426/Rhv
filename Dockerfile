@@ -4,8 +4,8 @@ FROM openjdk:8-jdk-alpine
 # Add a volume pointing to /tmp
 VOLUME /tmp
 
-# Make port 8080 available to the world outside this container
-EXPOSE 12000
+# Add entrypoint.sh at the root of the container
+ADD entrypoint.sh /entrypoint.sh
 
 # The application's jar file
 ARG JAR_FILE=target/rhv-0.0.1.jar
@@ -13,5 +13,17 @@ ARG JAR_FILE=target/rhv-0.0.1.jar
 # Add the application's jar to the container
 ADD ${JAR_FILE} rhv.jar
 
-# Run the jar file 
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/rhv.jar"]
+# Make sure entrypoint.sh is executable
+RUN chmod +x /entrypoint.sh
+
+# All Spring Boot components expose 8080 as the container port
+EXPOSE 8080
+
+# All Spring Boot components expose 8000 as the container java debug port
+EXPOSE 8000
+
+# Execute entrypoint.sh as the entrypoint command
+ENTRYPOINT ["/entrypoint.sh"]
+
+# Start the Spring Boot fat JAR with the given JAVA_OPTS
+CMD exec java $JAVA_OPTS -jar /rhv.jar
