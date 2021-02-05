@@ -10,7 +10,7 @@
 		echo "JAVA_OPTS: " $JAVA_OPTS
 		
 		echo "Testing java"
-		java
+		sh java
 		
 		
 #    fi
