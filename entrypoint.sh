@@ -8,5 +8,10 @@
 		echo "Setting JAVA_OPTS"
         export JAVA_OPTS="$JAVA_OPTS -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8000"
 		echo "JAVA_OPTS: " $JAVA_OPTS
+		
+		echo "Testing java"
+		java
+		
+		
 #    fi
 #fi
