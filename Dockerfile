@@ -24,7 +24,9 @@ EXPOSE 8000
 
 # Execute entrypoint.sh as the entrypoint command
 #ENTRYPOINT ["sh", "/entrypoint.sh"]
+ENV JAVA_TOOL_OPTIONS -agentlib:jdwp=transport=dt_socket,address=8000,server=y,suspend=n
+ENV JAVA_OPTS -agentlib:jdwp=transport=dt_socket,address=8000,server=y,suspend=n
 
 # Start the Spring Boot fat JAR with the given JAVA_OPTS
-CMD ["java", "-Dagentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8000", "-jar", "/rhv.jar"]
+CMD ["java", "-jar", "/rhv.jar"]
 
